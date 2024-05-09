@@ -26,4 +26,7 @@ class Request:
         """
         对response的状态进行异常处理
         """
-        return response.text
+        return response
+
+    def get_text(self):
+        return self.get_response().text
