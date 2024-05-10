@@ -69,7 +69,3 @@ class GPA_Analyse:
                             course.credits) + " 绩点：" + str(course.GPA) + "\n")
             average = GPA_sum / credits_sum
             file.write("平均绩点" + str(average) + "\n")
-
-
-a = GPA_Analyse()
-a.analyse()
