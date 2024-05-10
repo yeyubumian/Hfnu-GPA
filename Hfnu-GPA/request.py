@@ -1,12 +1,14 @@
 import requests
-import Constant
+import config
+import const
 
 
 class Request:
     def __init__(self):
-        self.cookie = Constant.cookie
-        self.user_agent = Constant.User_Agent
-        self.data = Constant.DATA
+        self.cookie = config.cookie
+        self.user_agent = const.USER_AGENT
+        self.data = const.DATA
+        self.url = const.URL
 
     def create_headers(self):
         """
@@ -20,9 +22,7 @@ class Request:
 
     def get_response(self):
         headers = self.create_headers()
-        url = Constant.URL
-        data = Constant.DATA
-        response = requests.get(url, headers=headers, params=data)
+        response = requests.get(self.url, headers=headers, params=self.data)
         """
         对response的状态进行异常处理
         """

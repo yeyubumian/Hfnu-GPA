@@ -1,5 +1,5 @@
 def is_number(it):
-    if not isinstance(it,str) or it is None:
+    if not isinstance(it, str) or it is None:
         return False
 
     if it.isnumeric():

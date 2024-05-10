@@ -1,4 +1,4 @@
-from Request import Request
+from request import Request
 from bs4 import BeautifulSoup
 
 
@@ -18,7 +18,3 @@ class HtmlParse:
         with open('../data/data.txt', 'w',encoding="UTF-8") as file:
             for grade in grade_list:
                 file.write(grade.get_text())
-
-
-a = HtmlParse()
-a.write_grade_list()
