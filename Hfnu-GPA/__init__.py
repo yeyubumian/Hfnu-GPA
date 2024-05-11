@@ -10,6 +10,6 @@ __all__ = [
 
 __title__ = 'Hfnu-GPA'
 
-__version__ = '1.0'
+__version__ = '1.1'
 
 __author__ = '夜雨'

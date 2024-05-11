@@ -39,8 +39,7 @@ class GPA_Analyse:
                 self.course_list.append(it)
 
     def write_course_list(self):
-        if len(self.course_list) == 0:
-            self.get_course_list()
+        self.get_course_list()
         with open('../data/我的成绩.txt', 'w', encoding="UTF-8") as file:
             for course in self.course_list:
                 file.write(
@@ -48,8 +47,7 @@ class GPA_Analyse:
                         course.credits) + " 绩点：" + str(course.GPA) + "\n")
 
     def analyse(self):
-        if len(self.course_list) == 0:
-            self.get_course_list()
+        self.write_course_list()
         date_year = config.date_year
         date_semester = ["1", "2"]
         if config.date_semester == "1":
@@ -60,8 +58,14 @@ class GPA_Analyse:
         with open('../data/目标成绩分析', 'w', encoding="UTF-8") as file:
             credits_sum = 0
             GPA_sum = 0
+            course_t = {"专业基础课程":1,"专业核心课程":2,"通识必修课程":3,"通识选修课程":4,"综合实践课程":5,"校园文化与社会实践课程":6,"创新创业与学术科技课程":7}
+            course_c = []
+            for i in course_t:
+                if course_t[i] in config.course_list:
+                    course_c.append(i)
+
             for course in self.course_list:
-                if course.date_year == date_year and course.date_semester in date_semester:
+                if course.date_year == date_year and course.date_semester in date_semester and course.course_type in course_c:
                     credits_sum += course.credits
                     GPA_sum += course.GPA * course.credits
                     file.write(
